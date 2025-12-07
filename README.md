@@ -84,8 +84,8 @@ What classes will you be creating for this project? Include the instance variabl
 
 CLASS BRICK
 - Instance variables:
-  - int x coordinate
-  - int y coordinate
+  - int xcor
+  - int ycor
   - int height
   - int width
   - boolean hit
@@ -93,8 +93,15 @@ CLASS BRICK
   - void display()
   - boolean contact()
 
-CLASS NAME1
+CLASS PADDLE
 - Instance variables:
-  - LIST INSTANCE VARS HERE
+  - int xcor
+  - int ycor
+  - int length
+  - int width
+  - int xspeed
 - METHODS
-  - LIST METHODS HERE
+  - void display()
+  - void move()
+ 
+CLASS BALL
