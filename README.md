@@ -90,8 +90,8 @@ CLASS BRICK
   - int width
   - boolean hit
 - METHODS
-  - display()
-  - contact()
+  - void display()
+  - boolean contact()
 
 CLASS NAME1
 - Instance variables:
