@@ -27,9 +27,7 @@ The first phase will be to work on this document.
 ### Necessary Features
 What are the core features that your program should have? These should be things that __must__ be implemented in order to make the program useable/playable, not extra features that could be added to make the program more interesting/fun.
 
-* Ball class - bounces off everything (starts at bottom center)
-* Brick class - dissapears when ball touches (boolean contact?) (exists in array)
-* Paddle class - can be moved side to side by player
+
 
 ### Extra Features
 What are some features that are not essential to the program, but you would like to see (provided you have time after completing the necessary features. Theses can be customizations that are not part of the core requirements.
@@ -59,6 +57,10 @@ Mouse Control:
 
 ### Classes
 What classes will you be creating for this project? Include the instance variables and methods that you believe you will need. You will be required to create at least 2 different classes. If you are going to use classes similar to those we've made for previous assignments, you will have to add new features to them.
+
+* Ball class - bounces off everything (starts at bottom center)
+* Brick class - dissapears when ball touches (boolean contact?) (exists in array)
+* Paddle class - can be moved side to side by player
 
 CLASS NAME0
 - Instance variables:
