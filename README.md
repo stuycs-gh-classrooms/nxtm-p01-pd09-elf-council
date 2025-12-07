@@ -105,3 +105,13 @@ CLASS PADDLE
   - void move()
  
 CLASS BALL
+- Instance variables:
+  - int xcor
+  - int ycor
+  - int size
+  - int xspeed
+  - int yspeed
+  - boolean inBounds
+- METHODS
+  - void display()
+  - void updateSpeed()
