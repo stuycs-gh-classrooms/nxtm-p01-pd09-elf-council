@@ -27,6 +27,26 @@ The first phase will be to work on this document.
 ### Necessary Features
 What are the core features that your program should have? These should be things that __must__ be implemented in order to make the program useable/playable, not extra features that could be added to make the program more interesting/fun.
 
+A breakout style game should have:
+
+    A user controlled paddle.
+    A grid of bricks.
+    A ball that bounces off the paddle, bricks, and side walls.
+    Bricks that disappear or are damaged when hit by the ball.
+    Loss of "life" if the ball gets past the paddle.
+
+In addition to basic gameplay, if you choose breakout your program must have the following:
+
+    A set number (more than one) of "lives".
+    The ability to play/pause the game.
+    The ability to reset the game.
+    Some continuation of the game if all the bricks have been destroyed.
+
+Paddle (class)
+Array of bricks (brick class)
+lives (global variable)
+Ball class that ricochets
+levels??
 
 
 ### Extra Features
