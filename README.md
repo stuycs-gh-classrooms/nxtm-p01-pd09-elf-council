@@ -47,6 +47,7 @@ In addition to basic gameplay, if you choose breakout your program must have the
 * lives (global variable)
 * Ball class that ricochets
 * levels - keep track of level, reset bricks, increase ball speed
+* boolean playing
 
 
 ### Extra Features
@@ -68,10 +69,13 @@ How will you be using arrays in this project?
 How will your program be controlled? List all keyboard commands and mouse interactions.
 
 Keyboard Commands:
-- LIST OF COMMANDS HERE
+- LEFT: will move Paddle to the left
+- RIGHT: will move Paddle to the right
+- SPACE: pause, unpause
+- r: resets game
 
 Mouse Control:
-- Mouse movement:
+- Mouse movement: 
 - Mouse pressed:
 
 
