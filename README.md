@@ -61,7 +61,7 @@ How will you be using arrays in this project?
 - YOUR ANSER HERE
 
 2D Array:
-- YOUR ANSWER HERE
+- An array of Brick class objects 
 
 
 ### Controls
@@ -82,11 +82,16 @@ What classes will you be creating for this project? Include the instance variabl
 * Brick class - dissapears when ball touches (boolean contact?) (exists in array)
 * Paddle class - can be moved side to side by player
 
-CLASS NAME0
+CLASS BRICK
 - Instance variables:
-  - LIST INSTANCE VARS HERE
+  - int x coordinate
+  - int y coordinate
+  - int height
+  - int width
+  - boolean hit
 - METHODS
-  - LIST METHODS HERE
+  - display()
+  - contact()
 
 CLASS NAME1
 - Instance variables:
