@@ -42,11 +42,11 @@ In addition to basic gameplay, if you choose breakout your program must have the
     The ability to reset the game.
     Some continuation of the game if all the bricks have been destroyed.
 
-Paddle (class)
-Array of bricks (brick class)
-lives (global variable)
-Ball class that ricochets
-levels??
+* Paddle (class)
+* Array of bricks (brick class)
+* lives (global variable)
+* Ball class that ricochets
+* levels - keep track of level, reset bricks, increase ball speed
 
 
 ### Extra Features
