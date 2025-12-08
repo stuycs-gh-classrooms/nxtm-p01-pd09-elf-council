@@ -1,1 +1,18 @@
-
+class Brick {
+  int xcor;
+  int ycor;
+  int high;
+  int wid;
+  boolean hit;
+  
+  Brick(int x, int y, int hSide, int vSide) {
+    xcor = x;
+    ycor = y;
+    high = vSide;
+    wid = hSide;
+  }
+  
+  void display() {
+    rect(xcor, ycor, wid, high);
+  }
+}
