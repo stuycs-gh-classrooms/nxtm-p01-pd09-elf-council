@@ -59,7 +59,7 @@ confetti??
 How will you be using arrays in this project?
 
 1D Array:
-- YOUR ANSER HERE
+- no 1d arrays
 
 2D Array:
 - An array of Brick class objects 
@@ -95,7 +95,7 @@ CLASS BRICK
   - boolean hit
 - METHODS
   - void display()
-  - boolean contact()
+  - boolean contact(Ball b)
 
 CLASS PADDLE
 - Instance variables:
