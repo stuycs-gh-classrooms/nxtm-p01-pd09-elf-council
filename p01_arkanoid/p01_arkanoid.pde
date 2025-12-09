@@ -1,5 +1,5 @@
 Paddle pad = new Paddle();
-Brick[][] grid;
+Wall arr = new Wall(16, 12, 50, 50);
 
 void setup() {
   size(800, 600); //provisionary size, subject to change
@@ -9,14 +9,11 @@ void setup() {
 void draw() {
   background(0, 0, 0);
   pad.display();
+  arr.display();
 }
 
 void keyPressed() {
   if (keyCode == RIGHT || keyCode == LEFT) {
     pad.updateXcor();
   }
-}
-
-void makeWall() {
-  
 }

@@ -15,4 +15,8 @@ class Brick {
   void display() {
     rect(xcor, ycor, wid, high);
   }
+  
+  void test() {
+    print("briiiiick");
+  }
 }
