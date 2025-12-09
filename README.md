@@ -54,6 +54,8 @@ In addition to basic gameplay, if you choose breakout your program must have the
 What are some features that are not essential to the program, but you would like to see (provided you have time after completing the necessary features. Theses can be customizations that are not part of the core requirements.
 
 confetti?? 
+Rainbow blocks
+Mouse control (in addition to key control)
 
 ### Array Usage
 How will you be using arrays in this project?
