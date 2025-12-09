@@ -16,7 +16,16 @@ class Brick {
     rect(xcor, ycor, wid, high);
   }
   
-  void test() {
-    print("briiiiick");
+  boolean contact(Ball b) {
+    if (b.xcor >= xcor && b.xcor <= (xcor + wid)) {
+      if (b.ycor >= ycor && b.ycor <= (ycor + high)) {
+        
+      }
+    }
+    
   }
-}
+  
+//  void test() {
+//    print("briiiiick");
+//  }
+} // Brick
