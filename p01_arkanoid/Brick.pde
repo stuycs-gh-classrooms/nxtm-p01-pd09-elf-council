@@ -1,31 +1,34 @@
 class Brick {
-  int xcor;
-  int ycor;
-  int high;
-  int wid;
-  boolean hit;
-  
+  int xcor; // x coordinate
+  int ycor; // y coordinate
+  int high; // height of brick
+  int wid; // width of brick
+  boolean hit; // has brick been hit by the ball?
+
   Brick(int x, int y, int hSide, int vSide) {
+    // all values provided in Wall class
     xcor = x;
     ycor = y;
     high = vSide;
     wid = hSide;
+    hit = false;
   }
-  
+
   void display() {
     rect(xcor, ycor, wid, high);
   }
-  
+
   boolean contact(Ball b) {
-    if (b.xcor >= xcor && b.xcor <= (xcor + wid)) {
-      if (b.ycor >= ycor && b.ycor <= (ycor + high)) {
-        
+    if ((b.xcor + b.size/2) >= xcor && (b.xcor - b.size/2) <= (xcor + wid)) { // if ball in contact with sides of brick
+      if ((b.ycor + b.size/2) <= ycor && (b.ycor - b.size/2) >= (ycor + high)) { // if ball in contact with top or bottom of brick
+        hit = true; // brick is hit
+        return true;
       }
     }
-    
+    return false;
   }
-  
-//  void test() {
-//    print("briiiiick");
-//  }
+
+  //  void test() {
+  //    print("briiiiick");
+  //  }
 } // Brick

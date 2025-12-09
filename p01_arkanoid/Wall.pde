@@ -1,8 +1,8 @@
 class Wall {
-  int numRows;
-  int numCols;
-  int wid;
-  int high;
+  int numRows; // number of rows
+  int numCols; // number of colums (indexes in each row array)
+  int wid; // width of each brick
+  int high; // height of each brick
   Brick[][] grid;
 
   Wall(int numX, int numY, int hSide, int vSide) {
@@ -14,21 +14,34 @@ class Wall {
   }
 
   void makeWall() {
-    for (int i = 0; i < numRows; i ++) {
-      for (int n = 0; n < numCols; n ++) {
-        grid[i][n] = new Brick(n*wid, 100 + i*high, wid, high);
+    for (int i = 0; i < numRows; i ++) { // each row
+      for (int n = 0; n < numCols; n ++) { // each index in each row (column)
+        grid[i][n] = new Brick(n*wid, 100 + i*high, wid, high); // make Brick at that index
       }
     }
   } // makeWall
 
   void display() {
-    for (int i = 0; i < numRows; i ++) {
+    for (int i = 0; i < numRows; i ++) { // for each row
       //print(i);
-      for (int n = 0; n < numCols; n ++) {
+      for (int n = 0; n < numCols; n ++) { // each index (column) in that row
         //print(n);
-        grid[i][n].display();
+        if (grid[i][n].hit == false) { // if brick has not been hit
+          grid[i][n].display(); // display brick
+        }
         //grid[i][n].test();
       }
     }
   }
+
+  boolean levelWon() {
+    for (int i = 0; i < numRows; i ++) { // each row
+      for (int n = 0; n < numCols; n ++) { // each index (column) in each row
+        if (grid[i][n].hit == false) { // if any brick has not been hit
+          return false; // the level isn't over
+        }
+      }
+    }
+    return true; // else every brick is hit; level over
+  } // levelWon
 } // Wall

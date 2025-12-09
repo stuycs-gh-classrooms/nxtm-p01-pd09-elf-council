@@ -5,8 +5,8 @@ class Paddle {
 
   Paddle() {
     // provisionary values, all subject to change
-    xcor = width/2;
-    len = 150;
+    xcor = width/2; 
+    len = 150; 
     dist = 20;
   }
 
