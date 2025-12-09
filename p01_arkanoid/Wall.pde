@@ -16,7 +16,7 @@ class Wall {
   void makeWall() {
     for (int i = 0; i < numRows; i ++) {
       for (int n = 0; n < numCols; n ++) {
-        Brick block = new Brick(n*wid, i*high, wid, high);
+        grid[i][n] = new Brick(n*wid, 100 + i*high, wid, high);
       }
     }
   } // makeWall
@@ -25,9 +25,9 @@ class Wall {
     for (int i = 0; i < numRows; i ++) {
       //print(i);
       for (int n = 0; n < numCols; n ++) {
-        print(n);
-        //grid[i][n].display();
-        grid[i][n].test();
+        //print(n);
+        grid[i][n].display();
+        //grid[i][n].test();
       }
     }
   }
