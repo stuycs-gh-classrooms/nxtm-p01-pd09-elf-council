@@ -8,10 +8,10 @@ class Ball {
   boolean inBounds;
 
   //CONSTRUCTOR
-  Ball() { //values subject to change
+  Ball(float startX, float startY) { //values subject to change
     size = 20;
-    xcor = width/2;
-    ycor = height - 80;
+    xcor = startX;
+    ycor = startY;
     xspeed = 4;
     yspeed = -4;
     inBounds = true;
