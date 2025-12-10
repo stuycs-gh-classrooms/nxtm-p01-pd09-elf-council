@@ -25,6 +25,15 @@ class Paddle {
     }
   } // updateXcor
 
+  void moveWithMouse() {
+    // keep paddle centered on mouse
+    xcor = mouseX - len/2;
+
+    // prevent going off-screen
+    if (xcor < 0) xcor = 0;
+    if (xcor + len > width) xcor = width - len;
+  }
+
   void display() {
     rect(xcor, height - 50, len, 10);
   }

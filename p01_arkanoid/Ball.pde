@@ -8,10 +8,10 @@ class Ball {
   boolean inBounds;
 
   //CONSTRUCTOR
-  Ball() { //values subject to change
+  Ball(float startX, float startY) { //values subject to change
     size = 20;
-    xcor = width/2;
-    ycor = height - 80;
+    xcor = startX;
+    ycor = startY;
     xspeed = 4;
     yspeed = -4;
     inBounds = true;
@@ -59,4 +59,47 @@ class Ball {
       }
     }
   }
+  
+void bounceBrick(Brick b) {
+  if (!b.hit && b.contact(this)) {
+
+    // Determine how far the ball overlaps on each side
+    float ballLeft   = xcor - size/2;
+    float ballRight  = xcor + size/2;
+    float ballTop    = ycor - size/2;
+    float ballBottom = ycor + size/2;
+
+    float brickLeft   = b.xcor;
+    float brickRight  = b.xcor + b.wid;
+    float brickTop    = b.ycor;
+    float brickBottom = b.ycor + b.high;
+
+    // distances into each side
+    float overlapLeft   = ballRight - brickLeft;
+    float overlapRight  = brickRight - ballLeft;
+    float overlapTop    = ballBottom - brickTop;
+    float overlapBottom = brickBottom - ballTop;
+
+    // Smallest overlap = collision side
+    float minOverlap = min(min(overlapLeft, overlapRight),
+                           min(overlapTop, overlapBottom));
+
+    if (minOverlap == overlapLeft) {
+      // Ball hit brick's left side so it bounces left
+      xspeed = abs(xspeed) * -1;
+    } 
+    else if (minOverlap == overlapRight) {
+      // Ball hit brick's right side -- bounces right
+      xspeed = abs(xspeed);
+    } 
+    else if (minOverlap == overlapTop) {
+      // Ball hit top of brick -- bounce up
+      yspeed = -abs(yspeed);
+    } 
+    else {
+      // Ball hit bottom of brick -- bounce down
+      yspeed = abs(yspeed);
+    }
+  }
+}
 }
