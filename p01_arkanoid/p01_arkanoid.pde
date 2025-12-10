@@ -20,3 +20,7 @@ void keyPressed() {
     pad.updateXcor(); // move paddle
   }
 }
+
+void mouseMoved() {
+  pad.updateXcor();
+}
