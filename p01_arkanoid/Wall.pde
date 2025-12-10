@@ -14,6 +14,14 @@ class Wall {
   }
 
   void makeWall() {
+    color[] rainbow = new color[6];
+    rainbow[0] = #e60000;
+    rainbow[1] = #ff7b00;
+    rainbow[2] = #ffff00;
+    rainbow[3] = #00c131;
+    rainbow[4] = #5bbce4;
+    rainbow[5] = #9b00ce;
+
     for (int i = 0; i < numRows; i ++) { // each row
       for (int n = 0; n < numCols; n ++) { // each index in each row (column)
         grid[i][n] = new Brick(n*wid, 100 + i*high, wid, high); // make Brick at that index

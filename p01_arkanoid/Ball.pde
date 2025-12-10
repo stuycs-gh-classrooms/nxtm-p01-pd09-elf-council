@@ -35,6 +35,8 @@ class Ball {
     }//bounce off top
 
     if (ycor >= height) {
+      xspeed = 0;
+      yspeed = 0;
       inBounds = false; //will code losing life elsewhere
     }
   }
