@@ -17,6 +17,11 @@ void draw() {
   arr.display(); // displays arr; wall of bricks
   b.display(); //displays ball
   b.bouncePaddle(pad);
+  for (r=0; r<arr.numRows; r++) {
+    for (c=0; c<arr.numCols; c++) {
+      b.bounceBrick(arr[r][c]);
+    }
+  }
   b.updateSpeed(); //keep updating speed when bounces
   arr.levelWon(); // checks if all bricks have been destoryed; level over
 }
