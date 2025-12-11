@@ -32,10 +32,10 @@ void draw() {
       playing = false;
       lives--;
     }
-  } else if (lives != 0) {
-    playing = true;
-    b.xspeed = 4;
-    b.yspeed = -4;
+  } else {
+    if (lives != 0) {
+      
+    }
   }
 }
 
@@ -48,3 +48,5 @@ void keyPressed() {
 void mouseMoved() {
   pad.updateXcor();
 }
+
+void 
