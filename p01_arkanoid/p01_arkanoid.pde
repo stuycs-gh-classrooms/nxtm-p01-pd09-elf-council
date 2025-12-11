@@ -23,6 +23,7 @@ void draw() {
   if (playing) {
     pad.moveWithMouse();
     b.bouncePaddle(pad);
+    b.xspeed *= level;
     for (int r=0; r<arr.numRows; r++) {
       for (int c=0; c<arr.numCols; c++) {
         b.bounceBrick(arr.grid[r][c]);
@@ -38,8 +39,8 @@ void draw() {
     }
   } else if (lives != 0) {
     playing = true;
-    b.xspeed = 4;
-    b.yspeed = -4;
+    b.xspeed = 4 * level;
+    b.yspeed = -4 * level;
     b.xcor = width/2;
     b.ycor = height - 70;
     b.inBounds = true;
