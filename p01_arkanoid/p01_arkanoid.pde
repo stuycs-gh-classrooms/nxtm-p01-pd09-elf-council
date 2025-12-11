@@ -20,6 +20,10 @@ void draw() {
   pad.display(); // displays paddle
   arr.display(); // displays arr; wall of bricks
   b.display(); //displays ball
+  textSize(25);
+  fill(255, 255, 255);
+  text("Lives : " + lives, width/16, 25);
+  text("Level " + int(((level - 1)/0.5 + 1)), width - 100, 25);
   if (playing) {
     pad.moveWithMouse();
     b.bouncePaddle(pad);
@@ -32,6 +36,9 @@ void draw() {
     b.updateSpeed(); //keep updating speed when bounces
     if (arr.levelWon()) { // checks if all bricks have been destroyed; level over
       level += 0.5;
+      arr = new Wall(16, 6, 50, 50);
+      arr.makeWall();
+      b = new Ball(width/2, height -70);
     }
     if (!b.inBounds) {
       playing = false;
@@ -44,11 +51,15 @@ void draw() {
     b.xcor = width/2;
     b.ycor = height - 70;
     b.inBounds = true;
+  } else if (key == ' ') {
   } else {
-    textSize(10);
+    textSize(128);
     fill(255, 0, 0);
     textAlign(CENTER);
-    text("GAME OVER", CENTER, CENTER);
+    text("GAME OVER", width/2, height/2);
+    textSize(25);
+    text("Press r to play again", width/2, height/2 + 50);
+
     //print(playing);
     //print(lives);
   }
@@ -58,7 +69,7 @@ void keyPressed() {
   if (keyCode == RIGHT || keyCode == LEFT) { // if left or right key has been pressed
     pad.updateXcor(); // move paddle
   }
-  if (key == 'r') {
+  if (key == 'r' || key == 'R') {
     lives = 3;
     arr = new Wall(16, 6, 50, 50);
     arr.makeWall();
