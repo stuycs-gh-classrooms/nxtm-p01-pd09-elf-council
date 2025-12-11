@@ -20,6 +20,7 @@ class Ball {
 
   //METHODS
   void display() {
+    fill(255);
     circle(xcor, ycor, size);
   }
 
@@ -50,7 +51,7 @@ class Ball {
       yspeed *= -1;
 
       float center = p.xcor + p.len/2;
-      
+
       //change xspeed based on where it hits paddle
       if (xcor < center - p.len/4) {
         xspeed = -5;  // far left
@@ -61,47 +62,44 @@ class Ball {
       }
     }
   }
-  
-void bounceBrick(Brick b) {
-  if (!b.hit && b.contact(this)) {
 
-    // Determine how far the ball overlaps on each side
-    float ballLeft   = xcor - size/2;
-    float ballRight  = xcor + size/2;
-    float ballTop    = ycor - size/2;
-    float ballBottom = ycor + size/2;
+  void bounceBrick(Brick b) {
+    if (!b.hit && b.contact(this)) {
 
-    float brickLeft   = b.xcor;
-    float brickRight  = b.xcor + b.wid;
-    float brickTop    = b.ycor;
-    float brickBottom = b.ycor + b.high;
+      // Determine how far the ball overlaps on each side
+      float ballLeft   = xcor - size/2;
+      float ballRight  = xcor + size/2;
+      float ballTop    = ycor - size/2;
+      float ballBottom = ycor + size/2;
 
-    // distances into each side
-    float overlapLeft   = ballRight - brickLeft;
-    float overlapRight  = brickRight - ballLeft;
-    float overlapTop    = ballBottom - brickTop;
-    float overlapBottom = brickBottom - ballTop;
+      float brickLeft   = b.xcor;
+      float brickRight  = b.xcor + b.wid;
+      float brickTop    = b.ycor;
+      float brickBottom = b.ycor + b.high;
 
-    // Smallest overlap = collision side
-    float minOverlap = min(min(overlapLeft, overlapRight),
-                           min(overlapTop, overlapBottom));
+      // distances into each side
+      float overlapLeft   = ballRight - brickLeft;
+      float overlapRight  = brickRight - ballLeft;
+      float overlapTop    = ballBottom - brickTop;
+      float overlapBottom = brickBottom - ballTop;
 
-    if (minOverlap == overlapLeft) {
-      // Ball hit brick's left side so it bounces left
-      xspeed = abs(xspeed) * -1;
-    } 
-    else if (minOverlap == overlapRight) {
-      // Ball hit brick's right side -- bounces right
-      xspeed = abs(xspeed);
-    } 
-    else if (minOverlap == overlapTop) {
-      // Ball hit top of brick -- bounce up
-      yspeed = -abs(yspeed);
-    } 
-    else {
-      // Ball hit bottom of brick -- bounce down
-      yspeed = abs(yspeed);
+      // Smallest overlap = collision side
+      float minOverlap = min(min(overlapLeft, overlapRight),
+        min(overlapTop, overlapBottom));
+
+      if (minOverlap == overlapLeft) {
+        // Ball hit brick's left side so it bounces left
+        xspeed = abs(xspeed) * -1;
+      } else if (minOverlap == overlapRight) {
+        // Ball hit brick's right side -- bounces right
+        xspeed = abs(xspeed);
+      } else if (minOverlap == overlapTop) {
+        // Ball hit top of brick -- bounce up
+        yspeed = -abs(yspeed);
+      } else {
+        // Ball hit bottom of brick -- bounce down
+        yspeed = abs(yspeed);
+      }
     }
   }
-}
 }
