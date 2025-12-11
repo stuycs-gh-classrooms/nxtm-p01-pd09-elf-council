@@ -36,8 +36,8 @@ void draw() {
     playing = true;
     b.xspeed = 4;
     b.yspeed = -4;
-    b.x = width/2;
-    b.y = height - 70;
+    b.xcor = width/2;
+    b.ycor = height - 70;
     b.inBounds = true;
   }
 }
