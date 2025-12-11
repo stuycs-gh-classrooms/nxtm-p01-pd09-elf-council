@@ -2,15 +2,13 @@ class Paddle {
   int xcor; // x coordiate of upper left corner of paddle
   int len; // length of paddle
   int dist; // distance paddle can move in one frame (lower = more control, higher = faster)
-  PVector mousePos;
 
   Paddle() {
     // provisionary values, all subject to change
     xcor = width/2;
     len = 150;
     dist = 20;
-    mousePos = new PVector (mouseX, mouseY);
-  }
+  } // Paddle
 
   void updateXcor() {
     if (keyCode == RIGHT) { // if right key pressed
@@ -32,10 +30,10 @@ class Paddle {
     // prevent going off-screen
     if (xcor < 0) xcor = 0;
     if (xcor + len > width) xcor = width - len;
-  }
+  } // moveWithMouse
 
   void display() {
     fill(255);
     rect(xcor, height - 50, len, 10);
-  }
+  } // display
 } // Paddle

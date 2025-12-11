@@ -1,16 +1,18 @@
-Paddle pad = new Paddle();
-Wall arr = new Wall(16, 6, 50, 50);
-Ball b;
-boolean playing;
+Paddle pad = new Paddle(); // create Paddle
+Wall arr = new Wall(16, 6, 50, 50); // create Wall
+Ball b; // create ball;
+boolean playing; // if game is going
+boolean paused;
 int lives;
 float level;
 
 void setup() {
   size(800, 600); //provisionary size, subject to change
-  background(0, 0, 0);
-  arr.makeWall();
-  b = new Ball(width/2, height -70);
-  playing = true;
+  background(0, 0, 0); // resets background to black
+  arr.makeWall(); // populates Wall with Bricks
+  b = new Ball(width/2, height -70); // instantiate Ball
+  playing = true; // set game going
+  paused = false;
   lives = 3;
   level = 1;
 }
@@ -22,12 +24,15 @@ void draw() {
   b.display(); //displays ball
   textSize(25);
   fill(255, 255, 255);
-  text("Lives : " + lives, width/16, 25);
-  text("Level " + int(((level - 1)/0.5 + 1)), width - 100, 25);
-  if (playing) {
-    pad.moveWithMouse();
-    b.bouncePaddle(pad);
-    b.xspeed *= level;
+  // this text is a little glitchy- it moves to the left the first time Game Over shows up, no idea why (but only once?)
+  text("Lives : " + lives, width/16, 25); // shows number of lives on screen
+  text("Level " + int(((level - 1)/0.5 + 1)), width - 100, 25); // shows level on screen
+
+  if (playing) { // if playing true
+    pad.moveWithMouse(); // one can move paddle
+    b.bouncePaddle(pad); // ball bounces off paddle
+    b.xspeed *= level; // set ball speed based on level (why only xspeed?)
+
     for (int r=0; r<arr.numRows; r++) {
       for (int c=0; c<arr.numCols; c++) {
         b.bounceBrick(arr.grid[r][c]);
@@ -38,21 +43,26 @@ void draw() {
       level += 0.5;
       arr = new Wall(16, 6, 50, 50);
       arr.makeWall();
-      b = new Ball(width/2, height -70);
+      // level two ball goes insanely fast
     }
-    if (!b.inBounds) {
+    if (!b.inBounds) { // if ball has fallen past paddle
       playing = false;
-      lives--;
+      lives--; // subtract 1 life
     }
-  } else if (lives != 0) {
+  } else if (paused == true) { // if game paused
+    //print("playing is false ");
+    textSize(50);
+    fill(255, 255, 255);
+    textAlign(CENTER);
+    text("Game Paused", width/2, height/2);
+  } else if (lives != 0) {  // if a life has been lost
+    b.xspeed = 4 * level; // reset ball xspeed
+    b.yspeed = -4 * level; // reset ball yspeed
+    b.xcor = width/2; // reset ball x coordinate
+    b.ycor = height - 70; // reset ball y coordinate
+    b.inBounds = true; // reset inBounds to true; ball is in bounds
     playing = true;
-    b.xspeed = 4 * level;
-    b.yspeed = -4 * level;
-    b.xcor = width/2;
-    b.ycor = height - 70;
-    b.inBounds = true;
-  } else if (key == ' ') {
-  } else {
+  } else if (lives == 0) { // if game has been lost
     textSize(128);
     fill(255, 0, 0);
     textAlign(CENTER);
@@ -63,17 +73,27 @@ void draw() {
     //print(playing);
     //print(lives);
   }
-}
+} // draw
 
 void keyPressed() {
   if (keyCode == RIGHT || keyCode == LEFT) { // if left or right key has been pressed
     pad.updateXcor(); // move paddle
   }
-  if (key == 'r' || key == 'R') {
+  if (key == 'r' || key == 'R') { // if r pressed reset game
     lives = 3;
     arr = new Wall(16, 6, 50, 50);
     arr.makeWall();
     b = new Ball(width/2, height -70);
     playing = true;
   }
-}
+  if (key == ' ') { // if space pressed pause game
+    //print("SPACE has been pressed ");
+    if (playing == true) { // if playing
+      playing = false; // stop play
+      paused = true; // set paused true (for if else in draw)
+    } else { // if not playing
+      playing = true; // restart play
+      paused = false; // set paused false (for if else in draw)
+    }
+  }
+} // keyPressed

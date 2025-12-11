@@ -4,7 +4,7 @@ class Brick {
   int high; // height of brick
   int wid; // width of brick
   boolean hit; // has brick been hit by the ball?
-  color c;
+  color c; // color of brick
 
   Brick(int x, int y, int hSide, int vSide, color r) {
     // all values provided in Wall class
@@ -14,35 +14,24 @@ class Brick {
     wid = hSide;
     hit = false;
     c = r;
-  }
+  } // brick
 
   void display() {
     fill(c);
     rect(xcor, ycor, wid, high);
-  }
-/**
-just commenting this out so we can test the other one
+  } // display
+
   boolean contact(Ball b) {
-    if ((b.xcor + b.size/2) >= xcor && (b.xcor - b.size/2) <= (xcor + wid)) { // if ball in contact with sides of brick
-      if ((b.ycor + b.size/2) <= ycor && (b.ycor - b.size/2) >= (ycor + high)) { // if ball in contact with top or bottom of brick
-        hit = true; // brick is hit
-        return true;
-      }
+    if ((b.xcor + b.size/2 >= xcor) && // if ball hits right side of brick
+      (b.xcor - b.size/2 <= xcor + wid) && // or left side of brick
+      (b.ycor + b.size/2 >= ycor) && // or top of brick
+      (b.ycor - b.size/2 <= ycor + high) && // or bottom of brick
+      !hit) {
+      hit = true; // hit is true
+      return true;
     }
     return false;
-  }
-**/
-boolean contact(Ball b) {
-   if ((b.xcor + b.size/2 >= xcor) &&
-       (b.xcor - b.size/2 <= xcor + wid) &&
-       (b.ycor + b.size/2 >= ycor) &&
-       (b.ycor - b.size/2 <= ycor + high) &&
-       !hit) {
-     hit = true;
-     return true;
-   }
-   return false;
-}
+  } // contact
 
   //  void test() {
   //    print("briiiiick");
