@@ -3,6 +3,7 @@ Wall arr = new Wall(16, 6, 50, 50);
 Ball b;
 boolean playing;
 int lives;
+float level;
 
 void setup() {
   size(800, 600); //provisionary size, subject to change
@@ -11,6 +12,7 @@ void setup() {
   b = new Ball(width/2, height -70);
   playing = true;
   lives = 3;
+  level = 1;
 }
 
 void draw() {
@@ -27,7 +29,9 @@ void draw() {
       }
     }
     b.updateSpeed(); //keep updating speed when bounces
-    arr.levelWon(); // checks if all bricks have been destoryed; level over
+    if (arr.levelWon()) { // checks if all bricks have been destroyed; level over
+      level += 0.5;
+    }
     if (!b.inBounds) {
       playing = false;
       lives--;
@@ -39,11 +43,25 @@ void draw() {
     b.xcor = width/2;
     b.ycor = height - 70;
     b.inBounds = true;
+  } else {
+    textSize(10);
+    fill(255, 0, 0);
+    textAlign(CENTER);
+    text("GAME OVER", CENTER, CENTER);
+    //print(playing);
+    //print(lives);
   }
 }
 
 void keyPressed() {
   if (keyCode == RIGHT || keyCode == LEFT) { // if left or right key has been pressed
     pad.updateXcor(); // move paddle
+  }
+  if (key == 'r') {
+    lives = 3;
+    arr = new Wall(16, 6, 50, 50);
+    arr.makeWall();
+    b = new Ball(width/2, height -70);
+    playing = true;
   }
 }
