@@ -20,6 +20,7 @@ class Ball {
 
   //METHODS
   void display() {
+    fill(255);
     circle(xcor, ycor, size);
   }
 

@@ -35,6 +35,7 @@ class Paddle {
   }
 
   void display() {
+    fill(255);
     rect(xcor, height - 50, len, 10);
   }
 } // Paddle
