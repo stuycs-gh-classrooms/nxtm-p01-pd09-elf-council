@@ -4,17 +4,20 @@ class Brick {
   int high; // height of brick
   int wid; // width of brick
   boolean hit; // has brick been hit by the ball?
+  color c;
 
-  Brick(int x, int y, int hSide, int vSide) {
+  Brick(int x, int y, int hSide, int vSide, color r) {
     // all values provided in Wall class
     xcor = x;
     ycor = y;
     high = vSide;
     wid = hSide;
     hit = false;
+    c = r;
   }
 
   void display() {
+    fill(c);
     rect(xcor, ycor, wid, high);
   }
 /**
