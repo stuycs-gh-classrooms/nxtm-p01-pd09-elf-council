@@ -23,8 +23,9 @@ class Wall {
     rainbow[5] = #9b00ce;
 
     for (int i = 0; i < numRows; i ++) { // each row
+    color rowColor = rainbow[i % rainbow.length];
       for (int n = 0; n < numCols; n ++) { // each index in each row (column)
-        grid[i][n] = new Brick(n*wid, 100 + i*high, wid, high); // make Brick at that index
+        grid[i][n] = new Brick(n*wid, 100 + i*high, wid, high, color(rowColor)); // make Brick at that index
       }
     }
   } // makeWall
