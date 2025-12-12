@@ -28,7 +28,7 @@ class Ball {
     xcor += xspeed;
     ycor += yspeed;
 
-    if (xcor <= size/2 || xcor >= width - size/2) {
+    if (xcor < size/2 || xcor > width - size/2) {
       xspeed *= -1;
     }//bounce off left & right walls
     if (ycor <= size/2) {
@@ -36,8 +36,8 @@ class Ball {
     }//bounce off top
 
     if (ycor >= height) {
-      xspeed = 0;
-      yspeed = 0;
+   //   xspeed = 0;
+    //  yspeed = 0;
       inBounds = false; //will code losing life elsewhere
     }
   }

@@ -45,8 +45,7 @@ void draw() {
       b.xcor = width/2;
       b.ycor = height - 70;
       b.xspeed += level; //make speed 1 faster
-      b.yspeed += level;
-      // level two ball goes insanely fast
+      b.yspeed -= level;
     }
     if (!b.inBounds) { // if ball has fallen past paddle
       playing = false;
@@ -60,7 +59,7 @@ void draw() {
     text("Game Paused", width/2, height/2);
   } else if (lives != 0) {  // if a life has been lost
     b.xspeed = 4 + level; // reset ball xspeed
-    b.yspeed = -4 + level; // reset ball yspeed
+    b.yspeed = -4 - level; // reset ball yspeed
     b.xcor = width/2; // reset ball x coordinate
     b.ycor = height - 70; // reset ball y coordinate
     b.inBounds = true; // reset inBounds to true; ball is in bounds
