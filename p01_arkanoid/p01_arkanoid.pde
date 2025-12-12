@@ -39,12 +39,12 @@ void draw() {
     }
     b.updateSpeed(); //keep updating speed when bounces
     if (arr.levelWon()) { // checks if all bricks have been destroyed; level over
-      level += 1;
+      level += 1; 
       arr = new Wall(16, 6, 50, 50);
       arr.makeWall();
       b.xcor = width/2;
       b.ycor = height - 70;
-      b.xpeed += level;
+      b.xspeed += level; //make speed 1 faster
       b.yspeed += level;
       // level two ball goes insanely fast
     }
