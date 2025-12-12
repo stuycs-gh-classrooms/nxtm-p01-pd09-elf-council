@@ -88,6 +88,8 @@ void keyPressed() {
     arr.makeWall(); 
     b = new Ball(width/2, height -70); // new ball
     playing = true; // start game
+    b.xspeed = 4; 
+    b.yspeed = -4; // reset ball speed
   }
   if (key == ' ') { // if space pressed pause game
     //print("SPACE has been pressed ");

@@ -46,7 +46,7 @@ class Ball {
     if (ycor + size/2 >= height - 50 &&
       xcor >= p.xcor &&
       xcor <= p.xcor + p.len &&
-      yspeed > 0) {
+      yspeed > 0) { // if on top or side of paddle
 
       yspeed *= -1;
 
