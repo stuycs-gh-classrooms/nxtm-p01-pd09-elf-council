@@ -26,7 +26,7 @@ void draw() {
   fill(255, 255, 255);
   // this text is a little glitchy- it moves to the left the first time Game Over shows up, no idea why (but only once?)
   text("Lives : " + lives, width/16, 25); // shows number of lives on screen
-  text("Level " + int(((level - 1)/0.5 + 1)), width - 100, 25); // shows level on screen
+  text("Level " + int(level + 1), width - 100, 25); // shows level on screen
 
   if (playing) { // if playing true
     pad.moveWithMouse(); // one can move paddle
@@ -80,12 +80,12 @@ void keyPressed() {
     pad.updateXcor(); // move paddle
   }
   if (key == 'r' || key == 'R') { // if r pressed reset game
-    lives = 3;
-    level = 0;
-    arr = new Wall(16, 6, 50, 50);
-    arr.makeWall();
-    b = new Ball(width/2, height -70);
-    playing = true;
+    lives = 3; // reset lives to 3
+    level = 0; // reset level
+    arr = new Wall(16, 6, 50, 50); // new wall
+    arr.makeWall(); 
+    b = new Ball(width/2, height -70); // new ball
+    playing = true; // start game
   }
   if (key == ' ') { // if space pressed pause game
     //print("SPACE has been pressed ");
