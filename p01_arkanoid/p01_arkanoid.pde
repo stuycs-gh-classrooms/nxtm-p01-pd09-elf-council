@@ -31,7 +31,6 @@ void draw() {
   if (playing) { // if playing true
     pad.moveWithMouse(); // one can move paddle
     b.bouncePaddle(pad); // ball bounces off paddle
-    b.xspeed += level; // set ball speed based on level (why only xspeed?)
 
     for (int r=0; r<arr.numRows; r++) {
       for (int c=0; c<arr.numCols; c++) {
@@ -43,6 +42,10 @@ void draw() {
       level += 1;
       arr = new Wall(16, 6, 50, 50);
       arr.makeWall();
+      b.xcor = width/2;
+      b.ycor = height - 70;
+      b.xpeed += level;
+      b.yspeed += level;
       // level two ball goes insanely fast
     }
     if (!b.inBounds) { // if ball has fallen past paddle
