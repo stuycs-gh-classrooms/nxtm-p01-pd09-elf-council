@@ -14,7 +14,7 @@ void setup() {
   playing = true; // set game going
   paused = false;
   lives = 3;
-  level = 1;
+  level = 0;
 }
 
 void draw() {
@@ -31,7 +31,7 @@ void draw() {
   if (playing) { // if playing true
     pad.moveWithMouse(); // one can move paddle
     b.bouncePaddle(pad); // ball bounces off paddle
-    b.xspeed *= level; // set ball speed based on level (why only xspeed?)
+    b.xspeed += level; // set ball speed based on level (why only xspeed?)
 
     for (int r=0; r<arr.numRows; r++) {
       for (int c=0; c<arr.numCols; c++) {
@@ -40,7 +40,7 @@ void draw() {
     }
     b.updateSpeed(); //keep updating speed when bounces
     if (arr.levelWon()) { // checks if all bricks have been destroyed; level over
-      level += 0.5;
+      level += 1;
       arr = new Wall(16, 6, 50, 50);
       arr.makeWall();
       // level two ball goes insanely fast
@@ -56,8 +56,8 @@ void draw() {
     textAlign(CENTER);
     text("Game Paused", width/2, height/2);
   } else if (lives != 0) {  // if a life has been lost
-    b.xspeed = 4 * level; // reset ball xspeed
-    b.yspeed = -4 * level; // reset ball yspeed
+    b.xspeed = 4 + level; // reset ball xspeed
+    b.yspeed = -4 + level; // reset ball yspeed
     b.xcor = width/2; // reset ball x coordinate
     b.ycor = height - 70; // reset ball y coordinate
     b.inBounds = true; // reset inBounds to true; ball is in bounds
@@ -81,6 +81,7 @@ void keyPressed() {
   }
   if (key == 'r' || key == 'R') { // if r pressed reset game
     lives = 3;
+    level = 0;
     arr = new Wall(16, 6, 50, 50);
     arr.makeWall();
     b = new Ball(width/2, height -70);
